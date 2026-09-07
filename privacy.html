@@ -21,7 +21,7 @@
 <main>
   <div class="page-header">
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: September 3, 2026</div>
+    <div class="updated">Last updated: September 7, 2026</div>
   </div>
 
   <article class="sheet">
@@ -31,7 +31,7 @@
     <h2>Information we collect</h2>
     <h3>1. Information you provide directly</h3>
     <ul>
-      <li><strong>Account information</strong>: when you sign in with Apple, we receive a unique account identifier and, if you share it, your email address (which may be Apple's private relay address)</li>
+      <li><strong>Account information</strong>: the App automatically creates an anonymous account identifier (a random ID tied to your iCloud account) — no sign-in, name or email is required</li>
       <li><strong>Photos you submit</strong>: images you choose for AI pet generation are sent to our processing service for the sole purpose of creating your pixel pet; the original photo is not stored on our servers after processing</li>
       <li><strong>Generated pets</strong>: the pixel-art pets created for you are stored on your account so they sync across your devices</li>
       <li><strong>Preferences</strong>: favorites and pet names you set</li>
@@ -41,11 +41,16 @@
       <li><strong>Purchase information</strong>: subscription and purchase status, processed through RevenueCat and Apple's payment system — we never see your payment details</li>
       <li><strong>Usage records</strong>: AI generation events (for gem accounting and abuse prevention), including technical metadata such as request time and outcome</li>
       <li><strong>Device information</strong>: basic technical information needed to deliver the service (app version, IP address for rate limiting)</li>
+      <li><strong>Usage analytics</strong>: in-app events (screens viewed, features used) associated with your anonymous account identifier, collected via PostHog to understand how the App is used and improve it</li>
+      <li><strong>Crash & performance data</strong>: crash reports and performance traces (device model, OS version, app version — no personal content), collected via Sentry to fix bugs</li>
+      <li><strong>Weather (optional)</strong>: if you enable the weather feature, your device location is used to fetch local weather through Apple WeatherKit; coordinates are kept on your device and are never stored on our servers</li>
     </ul>
     <h3>3. Information stored only on your device</h3>
     <ul>
       <li>Selected pet, widget configurations and display preferences</li>
       <li>Local copies of your pet collection</li>
+      <li>Your last location fix for the weather widget (if enabled)</li>
+      <li>Photos you choose for the photo widget</li>
     </ul>
 
     <h2>How we use your information</h2>
@@ -60,11 +65,13 @@
 
     <h2>Third-party services</h2>
     <ul>
-      <li><strong>Apple</strong> — Sign in with Apple, payments, App Store. <a href="https://www.apple.com/legal/privacy/">Privacy policy</a></li>
+      <li><strong>Apple</strong> — payments, App Store, iCloud, WeatherKit. <a href="https://www.apple.com/legal/privacy/">Privacy policy</a></li>
       <li><strong>Supabase</strong> — account database and authentication (hosted in the EU). <a href="https://supabase.com/privacy">Privacy policy</a></li>
       <li><strong>Google Gemini API</strong> — AI image processing for pet generation; photos are processed transiently. <a href="https://policies.google.com/privacy">Privacy policy</a></li>
       <li><strong>Cloudflare</strong> — secure proxy in front of our AI service, including per-IP rate limiting. <a href="https://www.cloudflare.com/privacypolicy/">Privacy policy</a></li>
       <li><strong>RevenueCat</strong> — subscription management. <a href="https://www.revenuecat.com/privacy/">Privacy policy</a></li>
+      <li><strong>PostHog</strong> — product analytics (hosted in the US). <a href="https://posthog.com/privacy">Privacy policy</a></li>
+      <li><strong>Sentry</strong> — crash reporting and performance monitoring. <a href="https://sentry.io/privacy/">Privacy policy</a></li>
     </ul>
 
     <h2>Data retention and deletion</h2>
