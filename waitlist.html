@@ -173,7 +173,7 @@ document.querySelectorAll('.pxcloud').forEach(cv => {
 
 /* ---------- pets ---------- */
 // sprite manifest: name -> [frameW, frameH] (8x strips, 2 frames)
-const SPRITES = {"c-axolotl-idle": [144, 104], "c-axolotl-run": [144, 104], "c-axolotl-sleep": [144, 104], "c-bat-idle": [144, 104], "c-bat-run": [136, 112], "c-bat-sleep": [120, 112], "c-bunny-idle": [104, 72], "c-bunny-run": [104, 104], "c-bunny-sleep": [120, 96], "c-butterfly-idle": [128, 88], "c-butterfly-run": [128, 96], "c-butterfly-sleep": [120, 96], "c-cat-idle": [120, 72], "c-cat-run": [120, 96], "c-cat-sleep": [120, 80], "c-dog-idle": [120, 72], "c-dog-run": [120, 96], "c-dog-sleep": [128, 80], "c-fish-idle": [128, 104], "c-fish-run": [120, 104], "c-fish-sleep": [128, 104], "c-fox-idle": [144, 96], "c-fox-run": [144, 96], "c-fox-sleep": [144, 88], "c-hedgehog-idle": [96, 72], "c-hedgehog-run": [96, 80], "c-hedgehog-sleep": [128, 88], "c-otter-idle": [144, 96], "c-otter-run": [144, 96], "c-otter-sleep": [144, 88], "c-panda-idle": [120, 88], "c-panda-run": [128, 96], "c-panda-sleep": [128, 80], "c-parrot-idle": [112, 104], "c-parrot-run": [120, 104], "c-parrot-sleep": [128, 80], "c-penguin-idle": [96, 104], "c-penguin-run": [120, 104], "c-penguin-sleep": [136, 104], "c-platypus-idle": [128, 80], "c-platypus-run": [144, 88], "c-platypus-sleep": [136, 72], "c-raccoon-idle": [136, 72], "c-raccoon-run": [144, 96], "c-raccoon-sleep": [144, 80], "c-red-panda-idle": [128, 96], "c-red-panda-run": [128, 96], "c-red-panda-sleep": [128, 88], "c-rock-idle": [88, 88], "c-rock-run": [104, 88], "c-rock-sleep": [120, 96], "c-tiger-idle": [144, 80], "c-tiger-run": [144, 88], "c-tiger-sleep": [144, 88], "c-trex-idle": [128, 88], "c-trex-run": [128, 104], "c-trex-sleep": [128, 96], "gumball": [192, 248], "pix": [240, 240], "toad": [176, 240], "tomnook": [184, 232], "darwin": [224, 240], "boblox": [192, 232], "peppo": [200, 240], "keroppi": [208, 240]};
+const SPRITES = {"c-axolotl-idle": [144, 104], "c-axolotl-run": [144, 104], "c-axolotl-sleep": [144, 104], "c-bat-idle": [144, 104], "c-bat-run": [136, 112], "c-bat-sleep": [120, 112], "c-bunny-idle": [104, 72], "c-bunny-run": [104, 104], "c-bunny-sleep": [120, 96], "c-butterfly-idle": [128, 88], "c-butterfly-run": [128, 96], "c-butterfly-sleep": [120, 96], "c-cat-idle": [120, 72], "c-cat-run": [120, 96], "c-cat-sleep": [120, 80], "c-dog-idle": [120, 72], "c-dog-run": [120, 96], "c-dog-sleep": [128, 80], "c-fish-idle": [128, 104], "c-fish-run": [120, 104], "c-fish-sleep": [128, 104], "c-fox-idle": [144, 96], "c-fox-run": [144, 96], "c-fox-sleep": [144, 88], "c-hedgehog-idle": [96, 72], "c-hedgehog-run": [96, 80], "c-hedgehog-sleep": [128, 88], "c-otter-idle": [144, 96], "c-otter-run": [144, 96], "c-otter-sleep": [144, 88], "c-panda-idle": [120, 88], "c-panda-run": [128, 96], "c-panda-sleep": [128, 80], "c-parrot-idle": [112, 104], "c-parrot-run": [120, 104], "c-parrot-sleep": [128, 80], "c-penguin-idle": [96, 104], "c-penguin-run": [120, 104], "c-penguin-sleep": [136, 104], "c-platypus-idle": [128, 80], "c-platypus-run": [144, 88], "c-platypus-sleep": [136, 72], "c-raccoon-idle": [136, 72], "c-raccoon-run": [144, 96], "c-raccoon-sleep": [144, 80], "c-red-panda-idle": [128, 96], "c-red-panda-run": [128, 96], "c-red-panda-sleep": [128, 88], "c-rock-idle": [88, 88], "c-rock-run": [104, 88], "c-rock-sleep": [120, 96], "c-tiger-idle": [144, 80], "c-tiger-run": [144, 88], "c-tiger-sleep": [144, 88], "c-trex-idle": [128, 88], "c-trex-run": [128, 104], "c-trex-sleep": [128, 96], "gumball": [192, 248], "pix": [240, 240], "pou": [256, 256], "toad": [176, 240], "tomnook": [184, 232], "darwin": [224, 240], "boblox": [192, 232], "peppo": [200, 240], "keroppi": [208, 240]};
 const COLLECTIONS = ["axolotl","bat","bunny","butterfly","cat","dog","fish","fox","hedgehog","otter","panda","parrot","penguin","platypus","raccoon","red-panda","rock","tiger","trex"];
 
 const W0 = window.innerWidth;
@@ -206,7 +206,7 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
   for(let i=0;i<2;i++){ const z=document.createElement('span'); z.className='zzz'; z.textContent='z'; s.appendChild(z); }
   stage.appendChild(s);
 })();
-[['toad','2%','8px'],['keroppi','29%','12px'],['darwin','45%','42px'],['gumball','58%','20px'],['tomnook','72%','34px'],['boblox','87%','8px']].forEach(([n,l,b]) => {
+(W0 < 520 ? [['toad','3%','8px'],['keroppi','30%','12px'],['gumball','56%','18px'],['pou','84%','10px']] : [['toad','2%','8px'],['keroppi','29%','12px'],['darwin','45%','42px'],['gumball','58%','20px'],['tomnook','72%','34px'],['pou','87%','10px']]).forEach(([n,l,b]) => {
   const s=document.createElement('div'); s.className='idler';
   s.style.left=l; s.style.bottom=b;
   s.appendChild(makePet(n)); stage.appendChild(s);
@@ -214,7 +214,7 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
 
 // ---- collections: random species, random poses ----
 const shuffled=[...COLLECTIONS].sort(()=>Math.random()-.5);
-const nPets=Math.min(14, Math.max(7, Math.floor(W0/95)));
+const nPets = W0 < 520 ? 4 : Math.min(14, Math.max(8, Math.floor(W0/95)));
 const slots=[...Array(nPets).keys()].sort(()=>Math.random()-.5);
 shuffled.slice(0,nPets).forEach((sid,i)=>{
   const roll=Math.random();
