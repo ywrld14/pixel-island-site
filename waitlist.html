@@ -81,7 +81,7 @@
   @keyframes frames { 0%,100% { background-position:0 0; } 50% { background-position:100% 0; } }
 
   .walker { position:absolute; bottom:0; animation: walkx var(--t,26s) linear infinite; }
-  .walker .pet { position:relative; animation: frames .5s steps(1) infinite, flipper var(--t,26s) step-end infinite; }
+  .walker .pet { position:relative; animation: frames .34s steps(1) infinite, flipper var(--t,26s) step-end infinite; }
   @keyframes walkx {
     0% { left:-15%; } 50% { left:100%; } 50.001% { left:100%; } 100% { left:-15%; }
   }
@@ -98,8 +98,8 @@
   .idler .pet { animation: frames .8s steps(1) infinite, bob 2.2s ease-in-out infinite; }
   @keyframes bob { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-5px);} }
 
-  footer { position:relative; z-index:2; text-align:center; padding:10px 0 calc(126px + env(safe-area-inset-bottom)); font-size:12.5px; }
-  footer a { color:#27567e; }
+  footer { position:fixed; left:0; right:0; bottom:0; z-index:3; text-align:center; padding:0 0 calc(5px + env(safe-area-inset-bottom)); font-size:12px; }
+  footer a { color:rgba(255,255,255,.95); font-weight:700; text-shadow:0 1px 3px rgba(0,40,10,.4); }
 </style>
 </head>
 <body>
@@ -165,13 +165,16 @@ document.querySelectorAll('.pxcloud').forEach(cv => {
 // name -> [frameW, frameH] at 8x scale in the strip
 const SPRITES = {
   pix:[240,240], toad:[176,240], tomnook:[184,232], darwin:[224,240],
-  boblox:[192,232], peppo:[200,240], keroppi:[208,240]
+  boblox:[192,232], peppo:[200,240], keroppi:[208,240],
+  'c-fox':[144,96], 'c-penguin':[120,104], 'c-trex':[128,104], 'c-redpanda':[128,96]
 };
-const scalePet = 0.42;
+const mob = window.innerWidth < 520;
+const scalePet = mob ? 0.32 : 0.42, scaleCol = mob ? 0.48 : 0.62;
 function makePet(name){
   const [w,h]=SPRITES[name], d=document.createElement('div');
+  const sc = name.startsWith('c-') ? scaleCol : scalePet;
   d.className='pet px';
-  d.style.width=(w*scalePet)+'px'; d.style.height=(h*scalePet)+'px';
+  d.style.width=(w*sc)+'px'; d.style.height=(h*sc)+'px';
   d.style.backgroundImage=`url(assets/pets/${name}.png)`;
   return d;
 }
@@ -184,23 +187,24 @@ function makePet(name){
 })();
 
 const stage = document.getElementById('pets');
-// walkers: cross the screen back and forth
-[['toad',26,2],['keroppi',34,10],['darwin',44,26]].forEach(([n,t,delay]) => {
+// WALKERS = Collections pets (real run frames), crossing back and forth
+[['c-fox',24,3],['c-penguin',40,14],['c-trex',31,22],['c-redpanda',52,37]].forEach(([n,t,delay]) => {
   const wrap=document.createElement('div'); wrap.className='walker';
-  wrap.style.setProperty('--t', t+'s'); wrap.style.animationDelay=-delay+'s'; wrap.style.bottom='6px';
+  wrap.style.setProperty('--t', t+'s'); wrap.style.animationDelay=-delay+'s'; wrap.style.bottom='4px';
   const pet=makePet(n); pet.style.animationDelay=-delay+'s';
   wrap.appendChild(pet); stage.appendChild(wrap);
 });
+// STATICS = custom pets, on the spot
 // sleeper: Peppo with zzz
 (() => {
   const s=document.createElement('div'); s.className='sleeper';
-  s.style.left='9%'; s.style.bottom='30px';
+  s.style.left='16%'; s.style.bottom='36px';
   const pet=makePet('peppo'); s.appendChild(pet);
   for(let i=0;i<2;i++){ const z=document.createElement('span'); z.className='zzz'; z.textContent='z'; s.appendChild(z); }
   stage.appendChild(s);
 })();
-// idlers: Tom Nook + Boblox
-[['tomnook','72%','38px'],['boblox','86%','14px']].forEach(([n,l,b]) => {
+// idlers: the rest of the crew, spread on the hills
+[['toad','2%','8px'],['keroppi','31%','14px'],['darwin','48%','42px'],['tomnook','68%','30px'],['boblox','86%','8px']].forEach(([n,l,b]) => {
   const s=document.createElement('div'); s.className='idler';
   s.style.left=l; s.style.bottom=b;
   s.appendChild(makePet(n)); stage.appendChild(s);
