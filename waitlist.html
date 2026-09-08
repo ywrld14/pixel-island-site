@@ -78,7 +78,7 @@
 
   .pet { position:relative; display:block; background-repeat:no-repeat; background-size:200% 100%; }
   .pet.anim { animation: frames .8s steps(1) infinite; }
-  @keyframes frames { 0%,100% { background-position:0 0; } 50% { background-position:-100% 0; } }
+  @keyframes frames { 0%,100% { background-position:0 0; } 50% { background-position:100% 0; } }
 
   .walker { position:absolute; bottom:0; animation: walkx var(--t,26s) linear infinite; }
   .walker .pet { position:relative; animation: frames .5s steps(1) infinite, flipper var(--t,26s) step-end infinite; }
