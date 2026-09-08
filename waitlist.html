@@ -74,6 +74,7 @@
                 inset 0 -2px 0 0 #b5671f, inset 0 6px 0 0 #d07f28;
   }
   button:disabled { opacity:.75; cursor:default; }
+  button .bell { vertical-align:-3px; margin-right:9px; }
   .hint { font-size:13px; color:#3d5c7c; opacity:.85; }
 
   /* success state */
@@ -148,7 +149,7 @@
   <form id="f" autocomplete="on">
     <input type="email" id="email" name="email" inputmode="email" autocomplete="email"
            placeholder="ton@email.com" required>
-    <button id="btn" type="submit">🔔 Prévenez-moi au lancement</button>
+    <button id="btn" type="submit"><svg class="bell px" viewBox="0 0 12 12" width="19" height="19" shape-rendering="crispEdges" aria-hidden="true"><g fill="#12314f"><rect x="5" y="0" width="2" height="1"/><rect x="4" y="1" width="4" height="1"/><rect x="3" y="2" width="1" height="4"/><rect x="8" y="2" width="1" height="4"/><rect x="2" y="6" width="1" height="2"/><rect x="9" y="6" width="1" height="2"/><rect x="1" y="8" width="10" height="1"/><rect x="5" y="9" width="2" height="2"/></g><g fill="#f6c94c"><rect x="4" y="2" width="4" height="4"/><rect x="3" y="6" width="6" height="2"/></g><rect x="4" y="2" width="1" height="2" fill="#fde9a8"/><rect x="5" y="9" width="2" height="1" fill="#e8923c"/></svg><span id="btnTxt">Prévenez-moi au lancement</span></button>
     <span class="hint">Un seul mail, le jour de la sortie. Zéro spam.</span>
   </form>
 
@@ -265,7 +266,7 @@ const I18N = {
     tag: "Un pet en pixel art qui vit dans ta <b>Dynamic Island</b> — il court, dort et t'accompagne toute la journée.",
     island: "bientôt sur l'App Store",
     placeholder: "ton@email.com",
-    cta: "🔔 Prévenez-moi au lancement",
+    cta: "Prévenez-moi au lancement",
     wait: "Un instant…",
     hint: "Un seul mail, le jour de la sortie. Zéro spam.",
     doneT: "C'est noté !",
@@ -279,7 +280,7 @@ const I18N = {
     tag: "A pixel art pet that lives in your <b>Dynamic Island</b> — it runs, sleeps and keeps you company all day.",
     island: "coming soon to the App Store",
     placeholder: "your@email.com",
-    cta: "🔔 Notify me at launch",
+    cta: "Notify me at launch",
     wait: "One sec…",
     hint: "One email on launch day. Zero spam.",
     doneT: "You're in!",
@@ -296,7 +297,7 @@ document.title = T.title;
 document.querySelector('.tag').innerHTML = T.tag;
 document.querySelector('.island span').textContent = T.island;
 document.getElementById('email').placeholder = T.placeholder;
-document.getElementById('btn').textContent = T.cta;
+document.getElementById('btnTxt').textContent = T.cta;
 document.querySelector('.hint').textContent = T.hint;
 document.querySelector('#done b').textContent = T.doneT;
 document.querySelector('#done p').textContent = T.doneP;
@@ -334,7 +335,7 @@ try { if (localStorage.getItem('pi_waitlist')) { f.style.display='none'; done.cl
 f.addEventListener('submit', async e => {
   e.preventDefault();
   const email=document.getElementById('email').value.trim();
-  btn.disabled=true; btn.textContent=T.wait;
+  btn.disabled=true; document.getElementById('btnTxt').textContent=T.wait;
   try {
     const r=await fetch(SB_URL+'/rest/v1/waitlist',{
       method:'POST',
@@ -346,7 +347,7 @@ f.addEventListener('submit', async e => {
     else if (r.status===409) success(true);
     else throw new Error(r.status);
   } catch(err){
-    btn.disabled=false; btn.textContent=T.cta;
+    btn.disabled=false; document.getElementById('btnTxt').textContent=T.cta;
     alert(T.err);
   }
 });
