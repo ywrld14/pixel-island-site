@@ -16,13 +16,15 @@
   html,body { height:100%; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(180deg,#4da3e8 0%,#7cc3f2 45%,#b8e2fa 70%,#d8f0fc 100%);
+    background:#7cc3f2;
     color:#1b2a3a;
     overflow-x:hidden;
     min-height:100dvh;
     display:flex; flex-direction:column;
   }
   .px { image-rendering: pixelated; }
+  .skybg { position:fixed; inset:-60px 0; z-index:-1;
+           background: linear-gradient(180deg,#4da3e8 0%,#7cc3f2 45%,#b8e2fa 70%,#d8f0fc 100%); }
 
   /* ---------- clouds ---------- */
   .cloud { position:fixed; z-index:0; opacity:.9; pointer-events:none; }
@@ -112,6 +114,8 @@
   @keyframes zz { 0% { opacity:0; transform:translateY(0) scale(.7);} 25% { opacity:.85;} 100% { opacity:0; transform:translateY(-26px) scale(1.15);} }
 
   .idler { position:absolute; }
+  .front { z-index:3; }
+  .backrow { z-index:1; filter:brightness(.96); }
   .idler .pet { animation: frames .8s steps(1) infinite, bob 2.2s ease-in-out infinite; }
   @keyframes bob { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-5px);} }
 
@@ -130,6 +134,7 @@
 </style>
 </head>
 <body>
+<div class="skybg"></div>
 
 <!-- clouds -->
 <div class="cloud" style="top:9%;  animation-duration:75s;  transform:scale(1);"><canvas class="pxcloud px" width="60" height="24" style="width:120px"></canvas></div>
@@ -194,7 +199,8 @@ const SPRITES = {"c-axolotl-idle": [144, 104], "c-axolotl-run": [144, 104], "c-a
 const COLLECTIONS = ["axolotl","bat","bunny","butterfly","cat","dog","fish","fox","hedgehog","otter","panda","parrot","penguin","platypus","raccoon","red-panda","rock","tiger","trex"];
 
 const W0 = window.innerWidth;
-const scaleCol   = W0 < 520 ? 0.44 : W0 < 900 ? 0.56 : 0.66;
+const MOB = W0 < 520;
+const scaleCol   = MOB ? 0.34 : W0 < 900 ? 0.56 : 0.66;
 const scaleCust  = W0 < 520 ? 0.30 : W0 < 900 ? 0.38 : 0.44;
 
 function makePet(name){
@@ -217,14 +223,14 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
 
 // ---- custom pets: stationary crew ----
 (() => {
-  const s=document.createElement('div'); s.className='sleeper';
+  const s=document.createElement('div'); s.className='sleeper front';
   s.style.left='15%'; s.style.bottom='38px';
   s.appendChild(makePet('peppo'));
   for(let i=0;i<2;i++){ const z=document.createElement('span'); z.className='zzz'; z.textContent='z'; s.appendChild(z); }
   stage.appendChild(s);
 })();
 (W0 < 520 ? [['toad','3%','8px'],['keroppi','30%','12px'],['gumball','56%','18px'],['pou','84%','10px']] : [['toad','2%','8px'],['keroppi','29%','12px'],['darwin','45%','42px'],['gumball','58%','20px'],['tomnook','72%','34px'],['pou','87%','10px']]).forEach(([n,l,b]) => {
-  const s=document.createElement('div'); s.className='idler';
+  const s=document.createElement('div'); s.className='idler front';
   s.style.left=l; s.style.bottom=b;
   s.appendChild(makePet(n)); stage.appendChild(s);
 });
@@ -244,14 +250,14 @@ shuffled.slice(0,nPets).forEach((sid,i)=>{
     wrap.appendChild(pet); stage.appendChild(wrap);
   } else {
     const left=(slots[i]*(100/nPets) + rnd(0,4)).toFixed(1)+'%';
-    const bottom=Math.round(rnd(6,48))+'px';
+    const bottom=Math.round(MOB ? rnd(48,72) : rnd(6,48))+'px';
     if (roll < 0.72) {                     // idler
-      const s=document.createElement('div'); s.className='idler';
+      const s=document.createElement('div'); s.className='idler'+(MOB?' backrow':'');
       s.style.left=left; s.style.bottom=bottom;
       const pet=makePet('c-'+sid+'-idle'); pet.style.animationDelay=-rnd(0,1)+'s';
       s.appendChild(pet); stage.appendChild(s);
     } else {                               // sleeper
-      const s=document.createElement('div'); s.className='sleeper';
+      const s=document.createElement('div'); s.className='sleeper'+(MOB?' backrow':'');
       s.style.left=left; s.style.bottom=bottom;
       s.appendChild(makePet('c-'+sid+'-sleep'));
       for(let k=0;k<2;k++){ const z=document.createElement('span'); z.className='zzz'; z.textContent='z'; s.appendChild(z); }
