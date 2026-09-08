@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pixel Island — bientôt sur l'App Store</title>
+<meta name="description" content="Un pet en pixel art qui vit dans ta Dynamic Island. Inscris-toi pour être prévenu·e du lancement.">
+<meta property="og:title" content="Pixel Island — un pet dans ta Dynamic Island">
+<meta property="og:description" content="Adopte, génère avec l'IA ou dessine ton compagnon pixel. Bientôt sur l'App Store — inscris-toi pour le jour J.">
+<meta property="og:image" content="https://ywrld14.github.io/pixel-island-site/assets/icon.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { height:100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(180deg,#4da3e8 0%,#7cc3f2 45%,#b8e2fa 70%,#d8f0fc 100%);
+    color:#1b2a3a;
+    overflow-x:hidden;
+    min-height:100dvh;
+    display:flex; flex-direction:column;
+  }
+  .px { image-rendering: pixelated; }
+
+  /* ---------- clouds ---------- */
+  .cloud { position:fixed; z-index:0; opacity:.9; pointer-events:none; }
+  .cloud i {
+    display:block; background:#fff; width:12px; height:12px; float:left;
+  }
+  .cloud { animation: drift linear infinite; }
+  @keyframes drift { from { transform:translateX(-30vw);} to { transform:translateX(130vw);} }
+
+  /* ---------- hero ---------- */
+  main { position:relative; z-index:2; flex:1; min-width:0; width:100%; max-width:100vw; display:flex; flex-direction:column;
+         align-items:center; text-align:center; padding: max(40px, env(safe-area-inset-top)) 22px 180px; }
+  .icon { width:96px; height:96px; border-radius:24px; box-shadow:0 12px 30px rgba(20,50,90,.25); margin-top:26px; }
+  h1 { font-size: clamp(34px, 9vw, 52px); font-weight:900; letter-spacing:-.5px; margin-top:18px; color:#12314f; }
+  .tag { font-size: clamp(17px, 4.6vw, 21px); font-weight:600; color:#2c4a68; margin-top:10px; max-width:340px; line-height:1.35; }
+
+  /* dynamic island mock */
+  .island { margin-top:26px; background:#0b0b0d; border-radius:999px; height:56px; min-width:190px;
+            display:flex; align-items:center; padding:0 20px; gap:12px;
+            box-shadow: inset 0 0 0 2px #17171a, 0 10px 28px rgba(10,20,40,.35); }
+  .island .pet { transform-origin:center; }
+  .island span { color:#e8ecf3; font-weight:700; font-size:14px; letter-spacing:.2px; }
+
+  /* ---------- form ---------- */
+  form { margin-top:34px; width:100%; max-width:380px; display:flex; flex-direction:column; gap:12px; }
+  input[type=email] {
+    width:100%; padding:16px 18px; font-size:17px; border-radius:16px; border:2px solid rgba(20,60,100,.18);
+    background:rgba(255,255,255,.92); outline:none; text-align:center; font-weight:600; color:#12314f;
+  }
+  input[type=email]:focus { border-color:#e8923c; }
+  button {
+    padding:17px 18px; font-size:18px; font-weight:800; color:#fff; border:none; border-radius:18px;
+    background:linear-gradient(180deg,#f2a24a,#e8923c); cursor:pointer;
+    box-shadow:0 8px 22px rgba(232,146,60,.45); transition:transform .12s ease;
+  }
+  button:active { transform:scale(.97); }
+  button:disabled { opacity:.7; }
+  .hint { font-size:13px; color:#3d5c7c; opacity:.85; }
+
+  /* success state */
+  .done { display:none; margin-top:34px; flex-direction:column; align-items:center; gap:10px; animation:pop .45s cubic-bezier(.2,1.6,.4,1); }
+  .done.show { display:flex; }
+  .done .check { font-size:56px; }
+  .done b { font-size:21px; color:#12314f; }
+  .done p { font-size:15.5px; color:#2c4a68; max-width:300px; line-height:1.4; }
+  @keyframes pop { from { transform:scale(.6); opacity:0;} to { transform:scale(1); opacity:1;} }
+
+  /* pixel confetti */
+  .confetti { position:fixed; width:10px; height:10px; z-index:50; pointer-events:none; }
+
+  /* ---------- ground + pets ---------- */
+  .ground { position:fixed; bottom:0; left:0; right:0; z-index:1; pointer-events:none; }
+  .hills { display:block; width:100%; height:110px; }
+  .pets { position:absolute; inset:0; }
+
+  .pet { position:relative; display:block; background-repeat:no-repeat; background-size:200% 100%; }
+  .pet.anim { animation: frames .8s steps(1) infinite; }
+  @keyframes frames { 0%,100% { background-position:0 0; } 50% { background-position:-100% 0; } }
+
+  .walker { position:absolute; bottom:0; animation: walkx var(--t,26s) linear infinite; }
+  .walker .pet { position:relative; animation: frames .5s steps(1) infinite, flipper var(--t,26s) step-end infinite; }
+  @keyframes walkx {
+    0% { left:-15%; } 50% { left:100%; } 50.001% { left:100%; } 100% { left:-15%; }
+  }
+  @keyframes flipper { 0% { transform:scaleX(1);} 50% { transform:scaleX(-1);} 100% { transform:scaleX(1);} }
+
+  .sleeper { position:absolute; }
+  .sleeper .pet { animation: frames 1.6s steps(1) infinite; }
+  .zzz { position:absolute; top:-14px; right:-6px; font-size:15px; font-weight:800; color:#12314f; opacity:0;
+         animation: zz 2.6s ease-in infinite; }
+  .zzz:nth-child(2) { animation-delay:.9s; right:-16px; }
+  @keyframes zz { 0% { opacity:0; transform:translateY(0) scale(.7);} 25% { opacity:.85;} 100% { opacity:0; transform:translateY(-26px) scale(1.15);} }
+
+  .idler { position:absolute; }
+  .idler .pet { animation: frames .8s steps(1) infinite, bob 2.2s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-5px);} }
+
+  footer { position:relative; z-index:2; text-align:center; padding:10px 0 calc(126px + env(safe-area-inset-bottom)); font-size:12.5px; }
+  footer a { color:#27567e; }
+</style>
+</head>
+<body>
+
+<!-- clouds -->
+<div class="cloud" style="top:9%;  animation-duration:75s;  transform:scale(1);"><canvas class="pxcloud px" width="60" height="24" style="width:120px"></canvas></div>
+<div class="cloud" style="top:20%; animation-duration:110s; animation-delay:-40s;"><canvas class="pxcloud px" width="60" height="24" style="width:180px"></canvas></div>
+<div class="cloud" style="top:33%; animation-duration:90s;  animation-delay:-70s;"><canvas class="pxcloud px" width="60" height="24" style="width:90px"></canvas></div>
+
+<main>
+  <img class="icon px" src="assets/icon.png" alt="Pixel Island">
+  <h1>Pixel Island</h1>
+  <p class="tag">Un pet en pixel art qui vit dans ta <b>Dynamic Island</b> — il court, dort et t'accompagne toute la journée.</p>
+
+  <div class="island">
+    <div class="pet anim px" id="islandPet"></div>
+    <span>bientôt sur l'App Store</span>
+  </div>
+
+  <form id="f" autocomplete="on">
+    <input type="email" id="email" name="email" inputmode="email" autocomplete="email"
+           placeholder="ton@email.com" required>
+    <button id="btn" type="submit">🔔 Prévenez-moi au lancement</button>
+    <span class="hint">Un seul mail, le jour de la sortie. Zéro spam.</span>
+  </form>
+
+  <div class="done" id="done">
+    <div class="check">🎉</div>
+    <b>C'est noté !</b>
+    <p>Tu recevras un email dès que Pixel Island sera disponible sur l'App Store — dans les tout prochains jours.</p>
+  </div>
+</main>
+
+<div class="ground">
+  <canvas id="hills" class="hills px" width="480" height="110"></canvas>
+  <div class="pets" id="pets"></div>
+</div>
+
+<footer>
+  <a href="privacy.html">Confidentialité</a> · <a href="terms.html">Conditions</a>
+</footer>
+
+<script>
+/* ---------- pixel clouds + hills (drawn, so they stay crisp & tiny) ---------- */
+document.querySelectorAll('.pxcloud').forEach(cv => {
+  const c = cv.getContext('2d'); c.fillStyle = '#ffffff';
+  const blobs = [[8,12,20,8],[16,6,26,12],[34,10,18,9],[4,14,50,6]];
+  blobs.forEach(([x,y,w,h]) => { for(let i=0;i<w;i+=2) for(let j=0;j<h;j+=2) c.fillRect(x+i,y+j,2,2); });
+});
+(() => {
+  const cv = document.getElementById('hills'), c = cv.getContext('2d');
+  const g1 = '#59b04f', g2 = '#4a9a43', g3 = '#3f8a3a';
+  for (let x=0; x<480; x+=4) {
+    const h1 = 46 + Math.round(18*Math.sin(x/70)) ;
+    const h2 = 26 + Math.round(12*Math.sin(x/45 + 2));
+    c.fillStyle=g1; c.fillRect(x,110-h1,4,h1);
+    c.fillStyle=g2; c.fillRect(x,110-h2,4,h2);
+    c.fillStyle=g3; c.fillRect(x,102,4,8);
+  }
+})();
+
+/* ---------- pets ---------- */
+// name -> [frameW, frameH] at 8x scale in the strip
+const SPRITES = {
+  pix:[240,240], toad:[176,240], tomnook:[184,232], darwin:[224,240],
+  boblox:[192,232], peppo:[200,240], keroppi:[208,240]
+};
+const scalePet = 0.42;
+function makePet(name){
+  const [w,h]=SPRITES[name], d=document.createElement('div');
+  d.className='pet px';
+  d.style.width=(w*scalePet)+'px'; d.style.height=(h*scalePet)+'px';
+  d.style.backgroundImage=`url(assets/pets/${name}.png)`;
+  return d;
+}
+// island pet = Pix, small
+(() => {
+  const p = makePet('pix'); p.id='islandPet';
+  const s = 0.16; const [w,h]=SPRITES.pix;
+  p.style.width=(w*s)+'px'; p.style.height=(h*s)+'px'; p.classList.add('anim');
+  document.getElementById('islandPet').replaceWith(p);
+})();
+
+const stage = document.getElementById('pets');
+// walkers: cross the screen back and forth
+[['toad',26,2],['keroppi',34,10],['darwin',44,26]].forEach(([n,t,delay]) => {
+  const wrap=document.createElement('div'); wrap.className='walker';
+  wrap.style.setProperty('--t', t+'s'); wrap.style.animationDelay=-delay+'s'; wrap.style.bottom='6px';
+  const pet=makePet(n); pet.style.animationDelay=-delay+'s';
+  wrap.appendChild(pet); stage.appendChild(wrap);
+});
+// sleeper: Peppo with zzz
+(() => {
+  const s=document.createElement('div'); s.className='sleeper';
+  s.style.left='9%'; s.style.bottom='30px';
+  const pet=makePet('peppo'); s.appendChild(pet);
+  for(let i=0;i<2;i++){ const z=document.createElement('span'); z.className='zzz'; z.textContent='z'; s.appendChild(z); }
+  stage.appendChild(s);
+})();
+// idlers: Tom Nook + Boblox
+[['tomnook','72%','38px'],['boblox','86%','14px']].forEach(([n,l,b]) => {
+  const s=document.createElement('div'); s.className='idler';
+  s.style.left=l; s.style.bottom=b;
+  s.appendChild(makePet(n)); stage.appendChild(s);
+});
+
+/* ---------- waitlist ---------- */
+const SB_URL = 'https://fmjuqbzfsukqgqyjrdhg.supabase.co';
+const SB_KEY = 'sb_publishable_-ctkKhz57euN_aHNjKkg4A_JjuXFqqf';
+const f=document.getElementById('f'), btn=document.getElementById('btn'), done=document.getElementById('done');
+
+function confetti(){
+  const colors=['#e8923c','#59b04f','#4da3e8','#f2c94c','#e05c5c','#ffffff'];
+  for(let i=0;i<46;i++){
+    const p=document.createElement('div'); p.className='confetti px';
+    p.style.background=colors[i%colors.length];
+    p.style.left=(50+((Math.random()*40)-20))+'vw'; p.style.top='38vh';
+    document.body.appendChild(p);
+    const dx=(Math.random()*2-1)*220, dy=-(120+Math.random()*260), rot=Math.random()*720-360;
+    p.animate([
+      { transform:'translate(0,0) rotate(0deg)', opacity:1 },
+      { transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`, opacity:1, offset:.55 },
+      { transform:`translate(${dx*1.4}px,${dy+460}px) rotate(${rot*1.6}deg)`, opacity:0 }
+    ], { duration:1500+Math.random()*700, easing:'cubic-bezier(.15,.6,.4,1)' }).onfinish=()=>p.remove();
+  }
+}
+function success(already){
+  f.style.display='none'; done.classList.add('show');
+  if (already) done.querySelector('b').textContent = 'Tu es déjà sur la liste !';
+  confetti();
+  try { localStorage.setItem('pi_waitlist','1'); } catch(e){}
+}
+try { if (localStorage.getItem('pi_waitlist')) { f.style.display='none'; done.classList.add('show'); } } catch(e){}
+
+f.addEventListener('submit', async e => {
+  e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  btn.disabled=true; btn.textContent='Un instant…';
+  try {
+    const r=await fetch(SB_URL+'/rest/v1/waitlist',{
+      method:'POST',
+      headers:{ 'apikey':SB_KEY, 'Authorization':'Bearer '+SB_KEY,
+                'Content-Type':'application/json', 'Prefer':'return=minimal' },
+      body: JSON.stringify({ email, source:'tiktok' })
+    });
+    if (r.ok) success(false);
+    else if (r.status===409) success(true);
+    else throw new Error(r.status);
+  } catch(err){
+    btn.disabled=false; btn.textContent='🔔 Prévenez-moi au lancement';
+    alert("Oups, ça n'a pas marché — réessaie dans un instant !");
+  }
+});
+</script>
+</body>
+</html>
