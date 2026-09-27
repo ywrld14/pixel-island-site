@@ -21,7 +21,7 @@
 <main>
   <div class="page-header">
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: September 7, 2026</div>
+    <div class="updated">Last updated: September 27, 2026</div>
   </div>
 
   <article class="sheet">
@@ -43,14 +43,15 @@
       <li><strong>Device information</strong>: basic technical information needed to deliver the service (app version, IP address for rate limiting)</li>
       <li><strong>Usage analytics</strong>: in-app events (screens viewed, features used) associated with your anonymous account identifier, collected via PostHog to understand how the App is used and improve it</li>
       <li><strong>Crash & performance data</strong>: crash reports and performance traces (device model, OS version, app version — no personal content), collected via Sentry to fix bugs</li>
-      <li><strong>Weather (optional)</strong>: if you enable the weather feature, your device location is used to fetch local weather through Apple WeatherKit; coordinates are kept on your device and are never stored on our servers</li>
+      <li><strong>Weather (optional)</strong>: if you enable the weather feature, your device location is used to fetch local weather through Apple WeatherKit, or through Open-Meteo when WeatherKit is unavailable (your coordinates are sent to Open-Meteo only to get the forecast); coordinates are never stored on our servers</li>
+      <li><strong>Music (optional)</strong>: if you use the iPod Music Widget and allow access to Apple Music, the App reads the track you are playing and its artwork on your device to display them. To show lyrics, the track title and artist (no account or device identifier) are sent to LRCLIB, a public lyrics service. Nothing about your music is stored on our servers</li>
     </ul>
     <h3>3. Information stored only on your device</h3>
     <ul>
       <li>Selected pet, widget configurations and display preferences</li>
       <li>Local copies of your pet collection</li>
       <li>Your last location fix for the weather widget (if enabled)</li>
-      <li>Photos you choose for the photo widget</li>
+      <li>Photos you choose for the photo widget (if you use it)</li>
     </ul>
 
     <h2>How we use your information</h2>
@@ -62,6 +63,7 @@
       <li><strong>App improvement</strong>: to fix bugs and improve features</li>
     </ul>
     <p>We do not sell your personal data. We do not use your photos or generated pets to train AI models.</p>
+    <p>Pets you mark as favorites may be built into a future App update so they animate in the Dynamic Island without the App running; they remain tied to your account and are not shown to other users.</p>
 
     <h2>Third-party services</h2>
     <ul>
@@ -72,10 +74,12 @@
       <li><strong>RevenueCat</strong> — subscription management. <a href="https://www.revenuecat.com/privacy/">Privacy policy</a></li>
       <li><strong>PostHog</strong> — product analytics (hosted in the US). <a href="https://posthog.com/privacy">Privacy policy</a></li>
       <li><strong>Sentry</strong> — crash reporting and performance monitoring. <a href="https://sentry.io/privacy/">Privacy policy</a></li>
+      <li><strong>Open-Meteo</strong> — weather forecast when Apple WeatherKit is unavailable (weather feature only). <a href="https://open-meteo.com/en/terms">Terms &amp; privacy</a></li>
+      <li><strong>LRCLIB</strong> — song lyrics for the iPod Music Widget (track title and artist only). <a href="https://lrclib.net">Website</a></li>
     </ul>
 
     <h2>Data retention and deletion</h2>
-    <p>Your account data (profile, gem balance, generated pets, purchase records) is retained while your account exists. You can permanently delete your account and all associated cloud data at any time from <strong>Settings → Delete my account</strong> in the App. Deletion is immediate and irreversible.</p>
+    <p>Your account data (profile, gem balance, generated pets, purchase records) is retained while your account exists. You can permanently delete your account and all associated cloud data at any time from <strong>Settings → Erase my data</strong> in the App. Deletion is immediate and irreversible.</p>
 
     <h2>Your rights</h2>
     <p>Depending on your location (including under the EU GDPR), you may have the right to access, correct, export, or delete your personal data, and to object to or restrict certain processing. You can exercise these rights via the in-app deletion feature or by contacting us. You also have the right to lodge a complaint with your local data protection authority.</p>
