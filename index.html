@@ -1,68 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-fr-title="Pixel Island : des pets pixel dans ta Dynamic Island, widgets et pets IA" data-fr-desc="De minuscules pets en pixel art qui vivent dans la Dynamic Island de ton iPhone. Transforme ta photo en pet pixel avec l&#x27;IA et ajoute des widgets mignons : Casino Slots, iPod, horloge, météo.">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pixel Island — Cute pixel pets in your Dynamic Island</title>
-<meta name="description" content="Adopt tiny pixel-art pets that live in your iPhone's Dynamic Island. Turn any photo into an animated pixel pal with AI.">
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
+<title>Pixel Island: pixel pets in your Dynamic Island, widgets &amp; AI photo pets</title>
+<meta name="description" content="Tiny pixel-art pets that live in your iPhone&#x27;s Dynamic Island. Turn your own photo into a pixel pet with AI, and add cute widgets: Casino Slots, iPod music, clock, weather.">
+<link rel="canonical" href="https://ywrld14.github.io/pixel-island-site/">
+<meta name="theme-color" content="#fff6f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1218" media="(prefers-color-scheme: dark)">
+<meta name="apple-itunes-app" content="app-id=6807920182">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pixel Island">
+<meta property="og:title" content="Pixel Island: pixel pets in your Dynamic Island, widgets &amp; AI photo pets">
+<meta property="og:description" content="Tiny pixel-art pets that live in your iPhone&#x27;s Dynamic Island. Turn your own photo into a pixel pet with AI, and add cute widgets: Casino Slots, iPod music, clock, weather.">
+<meta property="og:url" content="https://ywrld14.github.io/pixel-island-site/">
+<meta property="og:image" content="https://ywrld14.github.io/pixel-island-site/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pixel Island: tiny pixel pets in your Dynamic Island, with Casino Slots widgets">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pixel Island: pixel pets in your Dynamic Island, widgets &amp; AI photo pets">
+<meta name="twitter:description" content="Tiny pixel-art pets that live in your iPhone&#x27;s Dynamic Island. Turn your own photo into a pixel pet with AI, and add cute widgets: Casino Slots, iPod music, clock, weather.">
+<meta name="twitter:image" content="https://ywrld14.github.io/pixel-island-site/assets/og.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preload" href="assets/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Pixel Island","operatingSystem":"iOS 17.0 or later","description":"Tiny pixel pets that live in your Dynamic Island. Turn your own photo into a pixel pet with AI, and decorate your Home Screen with pixel widgets.","url":"https://ywrld14.github.io/pixel-island-site/","downloadUrl":"https://apps.apple.com/app/id6807920182","image":"https://ywrld14.github.io/pixel-island-site/assets/icon.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Refresh Agency"}}
+</script>
 </head>
 <body>
-<nav>
-  <img class="app-icon" src="assets/icon.png" alt="">
-  <span class="title">Pixel Island</span>
-  <div class="links">
-    <a href="support.html">Support</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+<a class="skip" href="#main" data-fr="Aller au contenu">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Pixel Island"><img src="assets/icon-180.png" width="34" height="34" alt="">Pixel Island</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="l opt" href="#pets" data-fr="Pets">Pets</a>
+      <a class="l opt" href="#widgets" data-fr="Widgets">Widgets</a>
+      <a class="l opt" href="#premium" data-fr="Premium">Premium</a>
+      <a class="l opt" href="#faq" data-fr="FAQ">FAQ</a>
+      <a class="l opt" href="support.html">Support</a>
+      <button class="lang" id="lang" type="button" aria-label="Passer en français">FR</button>
+      <a class="btn sm" href="https://apps.apple.com/app/id6807920182" data-fr="Obtenir">Get the app</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<main>
-  <section class="hero">
-    <img class="app-icon" src="assets/icon.png" alt="Pixel Island app icon">
-    <h1>Pixel Island</h1>
-    <p class="tagline">Tiny pixel-art pets that live in your Dynamic&nbsp;Island — and an AI that turns any photo into one.</p>
-    <a class="store-badge" href="#" aria-disabled="true">Coming soon on the App&nbsp;Store</a>
-    <div class="screens">
-      <img src="assets/screen-home.png" alt="Pixel Island home screen with pet collection">
-      <img src="assets/screen-shop.png" alt="Pixel Island shop with premium pass and gem packs">
-    </div>
-  </section>
+<main id="main">
 
-  <section class="features">
-    <div class="card">
-      <div class="emoji">🏝️</div>
-      <h3>Alive in your island</h3>
-      <p>An animated pixel pet walks, breathes and keeps you company in the Dynamic Island — while you use your other apps.</p>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div>
+      <p class="kicker" data-fr="Pour iPhone">For iPhone</p>
+      <h1 id="h1" data-fr="De minuscules pets pixel qui vivent dans ta &lt;em&gt;Dynamic Island&lt;/em&gt;.">Tiny pixel pets that live in your <em>Dynamic Island</em>.</h1>
+      <p class="lead" data-fr="Regarde-les marcher, faire la sieste et te tenir compagnie pendant que tu utilises ton iPhone. Ou transforme ta propre photo en pet grâce à l&#x27;IA.">Watch them walk, nap and keep you company while you use your phone. Or turn your own photo into one with AI.</p>
+      <div class="cta">
+        <a class="badge" href="https://apps.apple.com/app/id6807920182"><img src="assets/badge-app-store-en.svg" data-fr-src="assets/badge-app-store-fr.svg" width="162" height="54" alt="Download on the App Store" data-fr-alt="Télécharger dans l'App Store"></a>
+        <a class="btn ghost" href="#pets" data-fr="Découvrir">See what's inside</a>
+      </div>
+      <p class="fine" data-fr="Gratuit à télécharger · iPhone sous iOS 17 ou plus récent">Free to download &middot; iPhone with iOS 17 or later</p>
     </div>
-    <div class="card">
-      <div class="emoji">✨</div>
-      <h3>Your pet, made by AI</h3>
-      <p>Pick any photo — you, your cat, your favorite character — and AI turns it into an animated pixel-art sprite in seconds.</p>
+
+    <div class="phone-stage" aria-hidden="true">
+      <div class="phone">
+        <div class="screen">
+          <div class="island">
+            <div class="track"><div class="walker"><div class="spr fox"></div></div></div>
+            <div class="exp"><div class="spr fox" style="--s:4"></div><div>Fox<small>Pixel Island</small></div></div>
+          </div>
+          <div class="clock">9:41</div>
+          <div class="date" data-fr="mardi 10 novembre">Tuesday, November 10</div>
+          <div class="widgets">
+            <img src="assets/widgets/clock.webp" width="220" height="220" alt="">
+            <img src="assets/widgets/weather.webp" width="220" height="220" alt="">
+            <img class="wide" src="assets/widgets/ipod.webp" width="552" height="256" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="float-card"><img src="assets/widgets/gold.webp" width="420" height="440" alt=""></div>
     </div>
-    <div class="card">
-      <div class="emoji">🐾</div>
-      <h3>45+ companions</h3>
-      <p>Cat, fox, axolotl, T-Rex, panda and many more, each with idle, walk and sleep animations.</p>
+  </div>
+</section>
+
+<section id="pets" aria-labelledby="pets-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker" data-fr="Pets pour Dynamic Island">Dynamic Island pets</p>
+      <h2 id="pets-h" data-fr="Un petit compagnon, toujours là.">A tiny friend, always there.</h2>
+      <p data-fr="Choisis un pet et il s&#x27;installe dans ta Dynamic Island. Il marche, fait la sieste et traîne dans un coin de ton écran toute la journée.">Pick a pet and it moves into your Dynamic Island. It walks, naps and hangs out in the corner of your screen all day long.</p>
     </div>
-    <div class="card">
-      <img class="gem" src="assets/gem.png" alt="">
-      <h3>Widgets everywhere</h3>
-      <p>Animated pet, clock, battery, countdown and quote widgets for your Home Screen, plus alternate app icons.</p>
+    <div class="pet-tiles" role="list">
+      <div class="pet-tile" role="listitem"><div class="spr fox" role="img" aria-label="Fox" data-fr-aria="Renard"></div><span data-fr="Renard">Fox</span></div>
+      <div class="pet-tile" role="listitem"><div class="spr axolotl" role="img" aria-label="Axolotl"></div><span>Axolotl</span></div>
+      <div class="pet-tile" role="listitem"><div class="spr cat" role="img" aria-label="Cat" data-fr-aria="Chat"></div><span data-fr="Chat">Cat</span></div>
+      <div class="pet-tile" role="listitem"><div class="spr panda" role="img" aria-label="Panda"></div><span>Panda</span></div>
+      <div class="pet-tile" role="listitem"><div class="spr parrot" role="img" aria-label="Parrot" data-fr-aria="Perroquet"></div><span data-fr="Perroquet">Parrot</span></div>
+      <div class="pet-tile" role="listitem"><div class="spr fish" role="img" aria-label="Fish" data-fr-aria="Poisson"></div><span data-fr="Poisson">Fish</span></div>
     </div>
-  </section>
+    <div class="points">
+      <div class="card"><h3 data-fr="Appui long pour agrandir">Long-press to expand</h3><p data-fr="Appuie longtemps sur l&#x27;île pour voir ton pet en grand, dans son petit décor.">Press and hold the island to see your pet big, in its own little scene.</p></div>
+      <div class="card"><h3 data-fr="Sur l’écran verrouillé aussi">On your Lock Screen too</h3><p data-fr="Le même pet apparaît dans une bannière sur ton écran verrouillé.">The same pet shows up in a banner on your Lock Screen.</p></div>
+      <div class="card"><h3 data-fr="Plein à collectionner">Dozens to collect</h3><p data-fr="Un nouveau pet gratuit chaque jour, et toute une collection à débloquer avec Premium.">A new free pet every day, plus a whole collection to unlock with Premium.</p></div>
+    </div>
+    <div class="ground" aria-hidden="true">
+      <div class="spr panda" style="--s:3;--t:23s;--dl:-3s"></div>
+      <div class="spr fox" style="--s:3;--t:17s;--dl:-9s"></div>
+      <div class="spr cat" style="--s:3;--t:29s;--dl:-16s"></div>
+      <div class="spr axolotl" style="--s:3;--t:21s;--dl:-1s"></div>
+    </div>
+  </div>
+</section>
+
+<section id="photo" class="band" aria-labelledby="photo-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker" data-fr="De la photo au pet pixel">Photo to pixel pet</p>
+      <h2 id="photo-h" data-fr="Transforme ta photo en pet pixel.">Turn your own photo into a pixel pet.</h2>
+      <p data-fr="Choisis une photo de ton chat, de ta peluche, de ton meilleur ami. L&#x27;IA la redessine en pet pixel animé en quelques secondes, et il s&#x27;installe dans ta Dynamic Island.">Pick a photo of your cat, your plush, your best friend. AI redraws it as an animated pixel-art pet in seconds, and it moves into your Dynamic Island.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="frame"><img class="photo" src="assets/img/cat-photo.webp" width="360" height="480" alt="A photo of a fluffy cream cat" data-fr-alt="Une photo d'un chat crème tout doux"></div>
+        <p><b data-fr="Étape 1">Step 1</b><span data-fr="Choisis une photo">Pick a photo</span></p>
+      </div>
+      <svg class="arrow" viewBox="0 0 10 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M0 3h6V1h1v1h1v1h1v2H8v1H7v1H6V5H0z"/></svg>
+      <div class="step">
+        <div class="frame sky"><div class="spr demo" role="img" aria-label="The same cat redrawn as an animated pixel-art pet" data-fr-aria="Le même chat redessiné en pet pixel animé"></div></div>
+        <p><b data-fr="Étape 2">Step 2</b><span data-fr="L&#x27;IA le redessine en pixel art">AI redraws it in pixel art</span></p>
+      </div>
+      <svg class="arrow" viewBox="0 0 10 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M0 3h6V1h1v1h1v1h1v2H8v1H7v1H6V5H0z"/></svg>
+      <div class="step">
+        <div class="frame dark"><div class="mini-island" role="img" aria-label="The pet walking in the Dynamic Island" data-fr-aria="Le pet qui marche dans la Dynamic Island"><div class="spr demo"></div></div></div>
+        <p><b data-fr="Étape 3">Step 3</b><span data-fr="Il emménage dans ta Dynamic Island">It moves into your Dynamic Island</span></p>
+      </div>
+    </div>
+    <p class="note" data-fr="Les pets IA se créent avec des gemmes. Ta photo est envoyée à notre service d’IA uniquement pour créer ton pet et ne sert pas à entraîner des modèles d’IA. Utilise uniquement des photos que tu as le droit d’utiliser. Voir la &lt;a href=&quot;privacy.html&quot;&gt;politique de confidentialité&lt;/a&gt;.">AI pets are created with gems. Your photo is sent to our AI service only to create your pet and isn't used to train AI models. Only use photos you have the right to use. See the <a href="privacy.html">Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<section id="widgets" aria-labelledby="w-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Widgets</p>
+      <h2 id="w-h" data-fr="Ton écran d’accueil, en plus mignon.">Your Home Screen, but cuter.</h2>
+      <p data-fr="Un seul widget, plein de styles. Choisis le tien dans « Modifier le widget ».">One widget, lots of styles. Pick yours in Edit Widget.</p>
+    </div>
+
+    <h3 class="sub">Casino Slots</h3>
+    <p class="lead" style="margin-bottom:22px" data-fr="Tire le levier et regarde tes pets défiler. Vise le jackpot dans un style assorti à ton écran. Pour le fun uniquement : aucun argent réel en jeu.">Pull the lever and watch your pets roll. Chase the jackpot in a style that matches your setup. Just for fun: no real money involved.</p>
+    <div class="w-slots">
+      <figure class="w big"><img src="assets/widgets/gold.webp" width="420" height="440" alt="Gold Casino Slots widget showing a jackpot of three axolotls" data-fr-alt="Widget Casino Slots doré avec un jackpot de trois axolotls"><figcaption data-fr="Doré">Gold</figcaption></figure>
+      <figure class="w sm"><img src="assets/widgets/candyShop.webp" width="360" height="377" alt="Candy Casino Slots widget" data-fr-alt="Widget Casino Slots style bonbon"><figcaption data-fr="Bonbon">Candy</figcaption></figure>
+      <figure class="w sm"><img src="assets/widgets/cozyCafe.webp" width="360" height="377" alt="Cafe Casino Slots widget" data-fr-alt="Widget Casino Slots style café"><figcaption data-fr="Café">Cafe</figcaption></figure>
+      <figure class="w sm"><img src="assets/widgets/fairyForest.webp" width="360" height="377" alt="Fairy Forest Casino Slots widget" data-fr-alt="Widget Casino Slots style forêt féerique"><figcaption data-fr="Forêt féerique">Fairy Forest</figcaption></figure>
+      <figure class="w sm"><img src="assets/widgets/oceanPals.webp" width="360" height="377" alt="Ocean Casino Slots widget" data-fr-alt="Widget Casino Slots style océan"><figcaption data-fr="Océan">Ocean</figcaption></figure>
+      <figure class="w sm"><img src="assets/widgets/spaceKitty.webp" width="360" height="377" alt="Space Casino Slots widget" data-fr-alt="Widget Casino Slots style espace"><figcaption data-fr="Espace">Space</figcaption></figure>
+    </div>
+
+    <h3 class="sub" style="margin-top:48px" data-fr="Et ce n’est pas tout">And more</h3>
+    <div class="w-more">
+      <figure class="w wide"><img src="assets/widgets/ipod.webp" width="552" height="256" alt="Retro iPod-style music widget playing a song" data-fr-alt="Widget musique façon iPod rétro en lecture"><figcaption data-fr="Widget musique façon iPod, avec ton Apple Music">iPod-style music widget for Apple Music</figcaption></figure>
+      <figure class="w"><img src="assets/widgets/clock.webp" width="250" height="250" alt="Pixel clock widget with a cat" data-fr-alt="Widget horloge pixel avec un chat"><figcaption data-fr="Horloge">Clock</figcaption></figure>
+      <figure class="w"><img src="assets/widgets/weather.webp" width="220" height="220" alt="Pixel weather widget" data-fr-alt="Widget météo pixel"><figcaption data-fr="Météo">Weather</figcaption></figure>
+      <figure class="w"><img src="assets/widgets/pet.webp" width="220" height="220" alt="Pet widget with a fox" data-fr-alt="Widget pet avec un renard"><figcaption data-fr="Ton pet">Your pet</figcaption></figure>
+    </div>
+    <div class="chips" aria-label="Also included" data-fr-aria="Aussi inclus">
+      <span class="chip" data-fr="Compte à rebours">Countdown</span>
+      <span class="chip" data-fr="Batterie">Battery</span>
+      <span class="chip" data-fr="Calendrier">Calendar</span>
+      <span class="chip" data-fr="Widgets écran verrouillé">Lock Screen widgets</span>
+      <span class="chip" data-fr="Icônes d’app alternatives">Alternate app icons</span>
+    </div>
+  </div>
+</section>
+
+<section id="premium" class="band" aria-labelledby="pr-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Premium &amp; gems</p>
+      <h2 id="pr-h" data-fr="Débloque tout.">Unlock everything.</h2>
+      <p data-fr="Gratuit à télécharger, avec un nouveau pet gratuit chaque jour. Passe Premium quand tu veux aller plus loin.">Free to download, with a new free pet every day. Go Premium when you want the whole island.</p>
+    </div>
+    <div class="two">
+      <div class="card premium">
+        <span class="tag" data-fr="7 jours d’essai gratuit">7-day free trial</span>
+        <h3>Pixel Island Premium</h3>
+        <ul>
+          <li data-fr="Tous les pets, décors et widgets">Every pet, scene and widget</li>
+          <li data-fr="Éditeur pixel pour dessiner tes propres pets">Pixel editor to draw your own pets</li>
+          <li data-fr="Des gemmes pour créer des pets avec l’IA">Gems to create AI pets</li>
+          <li data-fr="Icônes d’app alternatives">Alternate app icons</li>
+        </ul>
+        <a class="btn ghost" href="https://apps.apple.com/app/id6807920182" data-fr="Essayer gratuitement">Try it free</a>
+        <p style="margin-top:14px;font-size:14px" data-fr="Annulable à tout moment dans les réglages de ton compte Apple.">Cancel anytime in your Apple Account settings.</p>
+      </div>
+      <div class="card gems">
+        <img src="assets/gem.webp" width="72" height="72" alt="">
+        <h3 data-fr="Gemmes">Gems</h3>
+        <p data-fr="Les gemmes servent à créer des pets avec l’IA à partir de tes photos. Obtiens-en avec Premium ou prends un pack dans la boutique. Elles ne fonctionnent que dans l’app.">Gems are what you spend to create AI pets from your photos. Get them with Premium or pick up a pack in the Shop. They only work inside the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">FAQ</p>
+      <h2 id="faq-h" data-fr="Questions fréquentes">Quick answers</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-fr="Pixel Island est-il gratuit ?">Is Pixel Island free?</summary><div data-fr="L’app est gratuite à télécharger, avec un nouveau pet gratuit chaque jour. Premium débloque tous les pets, décors et widgets, avec 7 jours d’essai gratuit. Tu peux annuler à tout moment dans les réglages de ton compte Apple.">The app is free to download, with a new free pet every day. Premium unlocks every pet, scene and widget, with a 7-day free trial. You can cancel anytime in your Apple Account settings.</div></details>
+      <details><summary data-fr="Sur quels iPhone ça marche ?">Which iPhones does it work on?</summary><div data-fr="Sur iPhone sous iOS 17 ou plus récent. Les pets vivent dans la Dynamic Island des modèles qui en ont une (iPhone 14 Pro et plus récents) ; sur les autres iPhone, ton pet apparaît dans la bannière de l’écran verrouillé. Les widgets fonctionnent sur tous.">On iPhone with iOS 17 or later. Pets live in the Dynamic Island on models that have one (iPhone 14 Pro and newer); on other iPhones your pet shows up in the Lock Screen banner. Widgets work on all of them.</div></details>
+      <details><summary data-fr="Mon pet n’apparaît pas dans la Dynamic Island">My pet doesn't show in the Dynamic Island</summary><div data-fr="&lt;p&gt;Vérifie que les activités en direct sont activées : Réglages › Pixel Island › Activités en direct. La Dynamic Island n’affiche pas l’activité quand l’app est au premier plan : reviens à l’écran d’accueil ou ouvre une autre app.&lt;/p&gt;&lt;p&gt;Il reste un souci ? Va sur la &lt;a href=&quot;support.html&quot;&gt;page d’aide&lt;/a&gt;.&lt;/p&gt;"><p>Make sure Live Activities are on: Settings › Pixel Island › Live Activities. The Dynamic Island doesn't show the activity while the app is in the foreground, so go home or open another app.</p><p>Still stuck? Head to the <a href="support.html">Support page</a>.</p></div></details>
+      <details><summary data-fr="Que devient ma photo ?">What happens to my photo?</summary><div data-fr="Elle est envoyée à notre service d’IA uniquement pour créer ton pet, puis n’est pas conservée sur nos serveurs. Elle ne sert pas à entraîner des modèles d’IA. Détails dans la &lt;a href=&quot;privacy.html&quot;&gt;politique de confidentialité&lt;/a&gt;.">It's sent to our AI service only to create your pet, and isn't kept on our servers afterwards. It isn't used to train AI models. Details are in the <a href="privacy.html">Privacy Policy</a>.</div></details>
+      <details><summary data-fr="Il me faut Apple Music ?">Do I need Apple Music?</summary><div data-fr="Seul le widget musique façon iPod utilise Apple Music, et il te demande ta permission. Tout le reste fonctionne sans.">Only the iPod-style music widget uses Apple Music, and it asks for your permission first. Everything else works without it.</div></details>
+      <details><summary data-fr="Comment contacter l’équipe ?">How do I get in touch?</summary><div data-fr="Dans l’app : Réglages › Contactez-nous. Ou par e-mail à &lt;a href=&quot;mailto:pixel@refresh-agency.fr&quot;&gt;pixel@refresh-agency.fr&lt;/a&gt;. Tu trouveras aussi des réponses sur la &lt;a href=&quot;support.html&quot;&gt;page d’aide&lt;/a&gt;.">In the app: Settings › Contact us. Or email <a href="mailto:pixel@refresh-agency.fr">pixel@refresh-agency.fr</a>. You'll also find answers on the <a href="support.html">Support page</a>.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="fin-h">
+  <div class="wrap">
+    <div class="card">
+      <h2 id="fin-h" data-fr="Prêt à adopter ton premier pet ?">Ready to adopt your first pet?</h2>
+      <p data-fr="Gratuit à télécharger sur l’App Store.">Free to download on the App Store.</p>
+      <a class="badge" href="https://apps.apple.com/app/id6807920182"><img src="assets/badge-app-store-en.svg" data-fr-src="assets/badge-app-store-fr.svg" width="162" height="54" alt="Download on the App Store" data-fr-alt="Télécharger dans l'App Store"></a>
+    </div>
+  </div>
+</section>
+
 </main>
-
 <footer>
-  <div class="links">
-    <a href="privacy.html">Privacy</a> ·
-    <a href="terms.html">Terms</a> ·
-    <a href="support.html">Support</a>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="index.html"><img src="assets/icon-180.png" width="30" height="30" alt="">Pixel Island</a>
+    </div>
+    <nav class="links" aria-label="Footer">
+      <a href="support.html">Support</a>
+      <a href="privacy.html" data-fr="Confidentialité">Privacy</a>
+      <a href="terms.html" data-fr="Conditions">Terms</a>
+      <a href="mailto:pixel@refresh-agency.fr" data-fr="Contact">Contact</a>
+    </nav>
+    <p class="legal" data-fr="Apple, le logo Apple, iPhone, Dynamic Island, Apple Music et App Store sont des marques d&#x27;Apple Inc. Pixel Island n&#x27;est pas affilié à Apple.">Apple, the Apple logo, iPhone, Dynamic Island, Apple Music and App Store are trademarks of Apple Inc. Pixel Island is not affiliated with Apple.</p>
+    <p class="copy">&copy; 2026 Refresh Agency &middot; Pixel Island</p>
   </div>
-  © 2026 Refresh Agency — Pixel Island
 </footer>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
