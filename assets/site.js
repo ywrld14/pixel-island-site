@@ -36,3 +36,21 @@
   if (start === "fr") apply("fr");
   if (btn) btn.addEventListener("click", function () { apply(root.lang === "fr" ? "en" : "fr"); });
 })();
+
+/* Play demo videos only while visible, never with reduced motion. */
+(function () {
+  var vids = document.querySelectorAll("video[data-autoplay]");
+  if (!vids.length || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    vids.forEach(function (v) { v.controls = true; });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); }
+      else v.pause();
+    });
+  }, { threshold: 0.25 });
+  vids.forEach(function (v) { io.observe(v); });
+})();
